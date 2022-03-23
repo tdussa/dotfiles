@@ -1,0 +1,112 @@
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/tdussa/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+setopt appendhistory autocd extendedglob nomatch notify
+bindkey -e
+# End of lines configured by zsh-newuser-install
+
+# Add ~/bin to PATH
+export PATH=${HOME}/bin:${PATH}
+
+# Source general aliases
+source ~/.aliases
+
+# Prompt magic
+#export PS1='%n@%m:%~%(!.#.$) '
+export PS1='%{%}%(?..%?%1v )%{%}%{%}%n%{%}@%m %40<...<%B%~%b%<< ${vcs_info_msg_0_}%(!.#.$) ' 
+export DONTSETRPROMPT=1
+export RPS1='%(0?..%B%S %? %s%b)'
+
+# Enable history timestamping
+setopt EXTENDED_HISTORY
+
+# Have paths searched by cd
+export CDPATH=$CDPATH:..:~/textext:~/textext/uni:~/svn:~/git
+
+# word-delete should delete paths by components
+WORDCHARS=${WORDCHARS//_}
+WORDCHARS=${WORDCHARS//\/}
+WORDCHARS=${WORDCHARS//-}
+WORDCHARS=${WORDCHARS//.}
+
+# Global aliases for convenience
+alias -g FS="-fullscreen"
+alias -g P="|"
+alias -g G="| grep"
+alias -g L="| less"
+alias -g W="| wc"
+
+# Suffix aliases
+# HTML pages and web addresses
+alias -s htm="w3m"
+alias -s html="w3m"
+alias -s com="w3m"
+alias -s de="w3m"
+alias -s edu="w3m"
+alias -s net="w3m"
+alias -s org="w3m"
+
+# DOC files
+alias -s doc="antiword"
+
+# PDF files
+alias -s pdf="xpdf"
+
+# DVI files
+alias -s dvi="xdvi"
+
+# PostScript files
+alias -s ps="gv"
+
+# Text files
+alias -s txt="less"
+
+# TeX source files
+alias -s tex="emacs"
+
+# MP3 files
+alias -s mp3="mpg123"
+
+# Movie files
+alias -s avi="mplayer"
+alias -s mpg="mplayer"
+alias -s mov="mplayer"
+alias -s wmv="mplayer"
+
+# C/C++ source files
+alias -s c="emacs"
+alias -s C="emacs"
+alias -s cc="emacs"
+alias -s c++="emacs"
+alias -s h="emacs"
+alias -s h++="emacs"
+
+# Setup some keys if possible
+if [[ -r ~/.zkbd/$TERM-$VENDOR-$OSTYPE ]]; then
+	source  ~/.zkbd/$TERM-$VENDOR-$OSTYPE
+	[[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
+	[[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
+	[[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
+	[[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
+	[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-history
+	[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history
+	[[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
+	[[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
+else
+	echo "Could not set up keys.  If special keys do not work, try running zkbd."
+fi
+
+# Set default browser
+export BROWSER=w3m
+
+# Set default terminal
+export TERMINAL=termit
+
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+bindkey '^F' fzf-file-widget
+bindkey '^T' transpose-chars
+
+[[ -e /home/tdussa/git/bashacks/bashacks.sh ]] && source /home/tdussa/git/bashacks/bashacks.sh

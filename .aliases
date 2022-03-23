@@ -1,0 +1,73 @@
+# Redefine cp to rsync
+alias cp="rsync --archive --partial --progress"
+
+# Define cpa to rsync with append
+alias cpa="rsync --append --archive --partial --progress"
+
+# Define shortcut to find broken links
+alias bl='ls **/*(-@)
+
+# Define shortcut to find non-broken links
+alias sl='ls **/*(@-^@)'
+
+# Define gitlog alias
+alias gitlog='git log --oneline --abbrev-commit --all --graph --decorate --color'
+
+# Define useful misc stuff
+alias beep="echo -en '\007'"
+alias bye="clear; logout"
+
+# Define emacs not to use X11
+alias emacs="emacs -nw"
+
+# Define fgrep
+alias fgrep='fgrep --color=auto'
+alias FGREP='fgrep -i --color=auto'
+
+# Define high-grade pwqgen call
+alias pwqhigh="pwqgen random=81"
+
+# Define sm with Axel and Inconsolata
+alias smaxel="sm -n Axel"
+alias smmono="sm -n Inconsolata"
+alias sm="smmono"
+
+# Define rdesktop shortcuts
+alias win="xfreerdp -x l -k 0x00010409 --plugin cliprdr --fonts -g 100% -u \"Tobias Dussa\" localhost"
+alias winrdp="xfreerdp -x l -k 0x00010409 --plugin cliprdr --fonts -g 100% -u \"Tobias Dussa\""
+
+# Define some useful SVN aliases
+alias svn-ps-file="svn ps svn:keywords \"Id Revision Author Date URL\""
+alias svn-ps-texdir="svn ps svn:ignore \"*.aux
+*.bbl
+*.blg
+*.dvi
+*.glx
+*.gxg
+*.gxs
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.pdf
+*.ps
+*.out
+*.snm
+*.toc
+*~\""
+
+# Define some useful pass aliases
+mypass() {
+  DIR=$1
+  shift
+  export PASSWORD_STORE_DIR=~/.password-store/${DIR}
+  export PASSWORD_STORE_GIT=${PASSWORD_STORE_DIR}
+  pass $@
+  unset PASSWORD_STORE_GIT
+  unset PASSWORD_STORE_DIR
+}
+
+# youtube-dl in Neu
+alias youtube-dl="yt-dlp -f best"
