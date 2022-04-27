@@ -10,4 +10,4 @@
 # zsh
 [ -n "$ZSH_VERSION"  ] && export PS1='
 %D{%Y-%m-%dT%H:%M:%S%z} (%h)
-%n@%m:%~%(!.#.$) '
+%n@%m:%B%~%b%<< ${vcs_info_msg_0_}%(!.#.$) '
