@@ -4,6 +4,9 @@ zstyle :compinstall filename '/home/tdussa/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+SAVEHIST=${HISTSIZE}
 setopt appendhistory autocd extendedglob nomatch notify
 bindkey -e
 # End of lines configured by zsh-newuser-install
@@ -24,7 +27,7 @@ export RPS1='%(0?..%B%S %? %s%b)'
 setopt EXTENDED_HISTORY
 
 # Have paths searched by cd
-export CDPATH=$CDPATH:..:~/textext:~/textext/uni:~/svn:~/git
+export CDPATH=$CDPATH:..:~/textext:~/git:~/Private:~/Private/textext:~/Private/git
 
 # word-delete should delete paths by components
 WORDCHARS=${WORDCHARS//_}
@@ -109,4 +112,28 @@ export TERMINAL=termit
 bindkey '^F' fzf-file-widget
 bindkey '^T' transpose-chars
 
+# Add timestamped prompt
+[ -f /etc/profile.d/timestamped_prompt.sh ] && source /etc/profile.d/timestamped_prompt.sh
+
+# Load command-not-found hook
+[[ -e /usr/share/doc/pkgfile/command-not-found.zsh ]] && source /usr/share/doc/pkgfile/command-not-found.zsh
+
+# Load bashacks
 [[ -e /home/tdussa/git/bashacks/bashacks.sh ]] && source /home/tdussa/git/bashacks/bashacks.sh
+
+# Add timestamps to hist-search
+fzf-history-widget() {
+  local selected num
+  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
+  selected=( $(fc -irl 1 | perl -ne 'print if !$seen{(/^\s*[0-9]+\**\s+(.*)/, $1)}++' |
+    FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort,ctrl-z:ignore $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(__fzfcmd)) )
+  local ret=$?
+  if [ -n "$selected" ]; then
+    num=$selected[1]
+    if [ -n "$num" ]; then
+      zle vi-fetch-history -n $num
+    fi
+  fi
+  zle reset-prompt
+  return $ret
+}
