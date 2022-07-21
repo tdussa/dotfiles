@@ -5,6 +5,6 @@
 [[ $- == *i* ]] || return 0
 
 # Extend history length
-export HISTSIZE=1000000
-export HISTFILESIZE=2000000
+export HISTSIZE=
+export HISTFILESIZE=
 export SAVEHIST=${HISTSIZE}
