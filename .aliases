@@ -5,7 +5,7 @@ alias cp="rsync --archive --partial --progress"
 alias cpa="rsync --append --archive --partial --progress"
 
 # Define shortcut to find broken links
-alias bl='ls **/*(-@)
+alias bl='ls **/*(-@)'
 
 # Define shortcut to find non-broken links
 alias sl='ls **/*(@-^@)'
@@ -71,3 +71,6 @@ mypass() {
 
 # youtube-dl in Neu
 alias youtube-dl="yt-dlp -f best"
+
+# history mit Timestamps versehen
+alias history="history -i"
