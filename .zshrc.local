@@ -9,6 +9,9 @@ setopt appendhistory autocd extendedglob nomatch notify
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
+# Set HISTFILE
+export HISTFILE=${HOME}/.histfile
+
 # Add ~/bin to PATH
 export PATH=${HOME}/bin:${PATH}
 
@@ -109,6 +112,9 @@ export TERMINAL=termit
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 bindkey '^F' fzf-file-widget
 bindkey '^T' transpose-chars
+
+# Increase history size
+[ -f /etc/profile.d/history_extend_size.sh ] && source /etc/profile.d/history_extend_size.sh
 
 # Add timestamped prompt
 [ -f /etc/profile.d/timestamped_prompt.sh ] && source /etc/profile.d/timestamped_prompt.sh
