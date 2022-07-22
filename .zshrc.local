@@ -141,3 +141,6 @@ fzf-history-widget() {
   zle reset-prompt
   return $ret
 }
+
+# host-specific aliases, if available
+[[ -e ${HOME}/.zshrc.$(hostname -s) ]] && source ${HOME}/.zshrc.$(hostname -s)

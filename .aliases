@@ -74,3 +74,6 @@ alias youtube-dl="yt-dlp -f best"
 
 # history mit Timestamps versehen
 alias history="history -i"
+
+# host-specific aliases, if available
+[[ -e ${HOME}/.aliases.$(hostname -s) ]] && source ${HOME}/.aliases.$(hostname -s)
