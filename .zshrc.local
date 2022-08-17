@@ -117,6 +117,7 @@ bindkey '^T' transpose-chars
 [ -f /etc/profile.d/history_extend_size.sh ] && source /etc/profile.d/history_extend_size.sh
 
 # Add timestamped prompt
+[ -f ~/git/dotfiles/timestamped_prompt.sh ] && source ~/git/dotfiles/timestamped_prompt.sh
 [ -f /etc/profile.d/timestamped_prompt.sh ] && source /etc/profile.d/timestamped_prompt.sh
 
 # Load command-not-found hook
