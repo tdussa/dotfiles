@@ -1,7 +1,7 @@
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/tdussa/.zshrc'
 
-autoload -Uz compinit
+autoload -Uz compinit vcs_info
 compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
@@ -20,6 +20,7 @@ source ~/.aliases
 
 # Prompt magic
 prompt off
+function precmd() { vcs_info }
 setopt prompt_subst
 export PS1='%{%}%(?..%?%1v )%{%}%{%}%n%{%}@%m %40<...<%B%~%b%<< ${vcs_info_msg_0_}%(!.#.$) ' 
 export DONTSETRPROMPT=1
