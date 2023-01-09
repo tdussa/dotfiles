@@ -19,7 +19,7 @@ export PATH=${HOME}/bin:${PATH}
 source ~/.aliases
 
 # Prompt magic
-#export PS1='%n@%m:%~%(!.#.$) '
+prompt off
 export PS1='%{%}%(?..%?%1v )%{%}%{%}%n%{%}@%m %40<...<%B%~%b%<< ${vcs_info_msg_0_}%(!.#.$) ' 
 export DONTSETRPROMPT=1
 export RPS1='%(0?..%B%S %? %s%b)'
