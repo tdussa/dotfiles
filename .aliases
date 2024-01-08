@@ -69,11 +69,14 @@ mypass() {
   unset PASSWORD_STORE_DIR
 }
 
-# youtube-dl in Neu
+# Better alternative to youtube-dl
 alias youtube-dl="yt-dlp -f best"
 
-# history mit Timestamps versehen
+# Add timestamps to history
 alias history="history -i"
+
+# Open HTML files in separate window
+alias htmlread="qutebrowser --target window"
 
 # host-specific aliases, if available
 [[ -e ${HOME}/.aliases.$(hostname -s) ]] && source ${HOME}/.aliases.$(hostname -s)
