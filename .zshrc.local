@@ -1,6 +1,13 @@
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/tdussa/.zshrc'
 
+# Run keychain if found
+if [ -x /usr/local/bin/keychain ] || [ -x /usr/bin/keychain ] || [ -x ~/bin/keychain ]; then
+	keychain --nolock ~/.ssh/id_$(hostname -s).rsa
+	keychain --nolock ~/.ssh/id_$(hostname -s).ed25519
+	source ~/.keychain/$(hostname)-sh > /dev/null
+fi
+
 autoload -Uz compinit vcs_info
 compinit
 # End of lines added by compinstall
