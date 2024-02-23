@@ -152,7 +152,5 @@ fzf-history-widget() {
   return $ret
 }
 
-export GPG_TTY=$(tty)
-
 # host-specific aliases, if available
 [[ -e ${HOME}/.zshrc.$(hostname -s) ]] && source ${HOME}/.zshrc.$(hostname -s)
