@@ -1,0 +1,35 @@
+# MUTTPRINT configuration file
+#
+# ~/.muttprintrc or /etc/Muttprintrc
+
+# Choose a font:
+# - Latex (EC-Fonts)
+# - Latex-bright (CM-bright)
+# - Times
+# - Utopia
+# - Palatino
+# - Charter
+# - Bookman
+# - AvantGarde
+# - CentSchool
+# - Chancery
+# - Helvetica
+### This is a custom font!
+FONT="AxelBera"
+###
+
+#
+# Choose a style for the first page
+# - plain       no rules
+# - border      rule after the headers
+# - fbox        simple box around the mail headers
+# - shadowbox   shadowbox around the header
+# - ovalbox     box with rounded corners around the header (thin lines)
+# - Ovalbox     same as "ovalbox" but thicker lines
+# - doublebox   box with double lines around the header
+# - grey        grey background behind the headers
+# - greybox     same as "grey" but with a additional black box
+FRONTSTYLE="fbox"
+
+# Use a wrapper script to write into a temp file
+PRINT_COMMAND="muttprint-display"
