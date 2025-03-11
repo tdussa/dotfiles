@@ -78,8 +78,5 @@ alias history="history -i"
 # Open HTML files in separate window
 alias htmlread="qutebrowser --target window"
 
-# Open qutebrowser via tor
-alias qutetor="qutebrowser --temp-basedir --set content.proxy socks://localhost:9050/"
-
 # host-specific aliases, if available
 [[ -e ${HOME}/.aliases.$(hostname -s) ]] && source ${HOME}/.aliases.$(hostname -s)
