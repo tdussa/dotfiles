@@ -116,7 +116,7 @@ fi
 export BROWSER=w3m
 
 # Set default terminal
-export TERMINAL=termit
+export TERMINAL=termite
 
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 bindkey '^F' fzf-file-widget
@@ -151,6 +151,10 @@ fzf-history-widget() {
   zle reset-prompt
   return $ret
 }
+
+# Load Powerlevel10k
+[[ -e /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]] && source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+[[ -e ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # host-specific aliases, if available
 [[ -e ${HOME}/.zshrc.$(hostname -s) ]] && source ${HOME}/.zshrc.$(hostname -s)
